@@ -1,3 +1,6 @@
+" if Vundle is not installed, get it here:
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -10,14 +13,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree' " C+d opens/closes NT - shift a = full screen NT
+Plugin 'scrooloose/nerdcommenter' " ,cl = comment line - ,cu = uncomment line
+Plugin 'kien/ctrlp.vim' " shift r = change search type
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'yegappan/mru'
+Plugin 'altercation/vim-colors-solarized.git'
 
 
 " All of your Plugins must be added before the following line
@@ -53,8 +58,23 @@ set nu
 set nowrap
 
 " convert all tab into space
-:set et
-:ret!
+set et
+ret!
+
+" change leader
+let mapleader = ","
+
+" tell terminal to use 256 colors
+set t_Co=256
+
+"Add this to ~/.profile to get 256 color support
+"if [ -e /usr/share/terminfo/x/xterm-256color ]; then                                                                    
+"  export TERM='xterm-256color'                                                                                          
+"else                                                                                                                    
+"  export TERM='xterm-color'                                                                                             
+"fi  
+
+colorscheme Monokai
 
 " white spaces per file type
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
