@@ -13,11 +13,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'scrooloose/nerdtree' " C+d opens/closes NT - shift a = full screen NT
-Plugin 'scrooloose/nerdcommenter' " ,cl = comment line - ,cu = uncomment line
-Plugin 'kien/ctrlp.vim' " shift r = change search type
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'scrooloose/nerdtree'              " C+d opens/closes NT - shift a = full screen NT
+Plugin 'scrooloose/nerdcommenter'         " ,cl = comment line - ,cu = uncomment line
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'                   " shift r = change search type
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
@@ -79,11 +79,13 @@ colorscheme Monokai
 " white spaces per file type
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype php setlocal ts=4 sts=2 sw=2
+autocmd Filetype erb setlocal ts=2 sts=2 sw=2
+autocmd Filetype haml setlocal ts=2 sts=2 sw=2
+autocmd Filetype php setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 
 " tell nerdtree to close after file opens
-let NERDTreeQuitOnOpen = 1
+" let NERDTreeQuitOnOpen = 1
 
 " remap nerdtree toggle
 nmap <silent> <C-D> :NERDTreeToggle<CR>
