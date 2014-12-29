@@ -61,6 +61,10 @@ set nowrap
 set et
 ret!
 
+" No tabs in the source file.
+" All tab characters are 4 space characters. 
+set tabstop=4 shiftwidth=4 expandtab
+
 " change leader
 let mapleader = ","
 
