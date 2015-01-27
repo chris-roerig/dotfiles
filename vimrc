@@ -63,6 +63,9 @@ ret!
 
 " allow pretty pasting
 set paste
+" No tabs in the source file.
+" All tab characters are 4 space characters. 
+set tabstop=4 shiftwidth=4 expandtab
 
 " change leader
 let mapleader = ","
