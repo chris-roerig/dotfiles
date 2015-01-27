@@ -61,6 +61,9 @@ set nowrap
 set et
 ret!
 
+" allow pretty pasting
+set paste
+
 " change leader
 let mapleader = ","
 
