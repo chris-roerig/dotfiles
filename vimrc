@@ -80,15 +80,22 @@ set t_Co=256
 "  export TERM='xterm-color'                                                                                             
 "fi  
 
-colorscheme Monokai
+" colorscheme Monokai
+
+"" Solarized ""
+" Make sure to set the terminal pallete to 'Solarized' 
+syntax enable
+set background=dark
+colorscheme solarized
 
 " white spaces per file type
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype erb setlocal ts=2 sts=2 sw=2
-autocmd Filetype haml setlocal ts=2 sts=2 sw=2
-autocmd Filetype php setlocal ts=4 sts=4 sw=4
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+autocmd Filetype html           setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby           setlocal ts=2 sts=2 sw=2
+autocmd Filetype erb            setlocal ts=2 sts=2 sw=2
+autocmd Filetype haml           setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml           setlocal ts=2 sts=2 sw=2
+autocmd Filetype php            setlocal ts=4 sts=4 sw=4
+autocmd Filetype javascript     setlocal ts=4 sts=4 sw=4
 
 " tell nerdtree to close after file opens
 " let NERDTreeQuitOnOpen = 1
