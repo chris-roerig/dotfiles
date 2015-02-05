@@ -1,0 +1,15 @@
+{
+	"color_scheme": "Packages/User/SublimeLinter/Solarized (Dark) (SL).tmTheme",
+	"ignored_packages":
+	[
+	],
+	"rulers":
+	[
+		80
+	],
+	"soda_classic_tabs": true,
+	"soda_folder_icons": true,
+	"theme": "Soda Dark 3.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"word_wrap": false
+}
