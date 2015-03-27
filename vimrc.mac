@@ -1,0 +1,210 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'              " C+d opens/closes NT - shift a = full screen NT
+Plugin 'scrooloose/nerdcommenter'         " ,cl = comment line - ,cu = uncomment line
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'yegappan/mru'
+Plugin 'kien/ctrlp.vim'                   " shift r = change search type
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'osyo-manga/vim-monster'
+" Plugin 'Shougo/neocomplete.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" map common command errors
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
+" show a vertial ruler
+set colorcolumn=80
+
+" display line numbers
+set nu
+
+" turn off wordwrap
+" set nowrap
+
+" convert all tab into space
+set et
+ret!
+
+" allow pretty pasting
+set paste
+" No tabs in the source file.
+" All tab characters are 4 space characters. 
+set tabstop=4 shiftwidth=4 expandtab
+
+" change leader
+let mapleader = ","
+
+" tell terminal to use 256 colors
+" set t_Co=256
+
+"Add this to ~/.profile to get 256 color support
+"if [ -e /usr/share/terminfo/x/xterm-256color ]; then                                                                    
+"  export TERM='xterm-256color'                                                                                          
+"else                                                                                                                    
+"  export TERM='xterm-color'                                                                                             
+"fi  
+
+" colorscheme Monokai
+
+"" Solarized ""
+" Make sure to set the terminal pallete to 'Solarized' 
+syntax enable
+set background=dark
+colorscheme solarized
+highlight clear SignColumn
+
+"Powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+" The looks of it
+set guifont=Inconsolata\ for\ Powerline:h14
+let g:airline_powerline_fonts=1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" GitGutter color settings
+highlight link GitGutterAdd DifAdd "" an added line
+" GitGutterChange       " a changed line
+" GitGutterDelete       " at least one removed line
+" GitGutterChangeDelete " a changed line followed by at least one removed line
+
+" white spaces per file type
+autocmd Filetype html           setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby           setlocal ts=2 sts=2 sw=2
+autocmd Filetype erb            setlocal ts=2 sts=2 sw=2
+autocmd Filetype haml           setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml           setlocal ts=2 sts=2 sw=2
+autocmd Filetype coffee         setlocal ts=2 sts=2 sw=2
+autocmd Filetype php            setlocal ts=4 sts=4 sw=4
+autocmd Filetype javascript     setlocal ts=4 sts=4 sw=4
+
+" autocomplete for ruby and rails
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1 
+
+set autoindent
+set nocompatible
+set nobackup
+set nowritebackup
+set history=50
+set ruler
+set cursorline
+set showcmd
+set laststatus=2
+set encoding=utf-8
+set clipboard=unnamed
+set noswapfile
+
+imap jj <Esc>
+
+" tell nerdtree to close after file opens
+" let NERDTreeQuitOnOpen = 1
+
+" remap nerdtree toggle
+nmap <silent> <C-D> :NERDTreeToggle<CR>
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+" Toggle NERDTree
+map <F10> :NERDTreeToggle<cr>
+
+" Store more MRU entries
+let MRU_Max_Entries = 20
+
+let g:ctrlp_cmd = "CtrlPMixed"
+let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'targets': '\targets\/*$',
+  \ }
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ }
+
+" for multicursor
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class
+set wildignore+=.svn,vendor/gems/*,*.jpg,*.jpeg,*.jpeg*,*.png,*.gif
+set wildignore+=*/public/uploads/*,*/.git/*,*/.bundle/*,*/bin/*,*/log/*
+set wildignore+=*/tmp/*,*/.sass-cache/*,*/.jhw-cache/*,*/node_modules/*
+
+
+" Set async completion.
+let g:monster#completion#rcodetools#backend = "async_rct_complete"
+
+" Use neocomplete.vim
+let g:neocomplete#force_omni_input_patterns = {
+\   'ruby' : '[^. *\t]\.\|\h\w*::',
+\}
