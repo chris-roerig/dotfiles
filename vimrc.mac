@@ -4,8 +4,6 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -20,24 +18,7 @@ Plugin 'yegappan/mru'
 Plugin 'kien/ctrlp.vim'                   " shift r = change search type
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'osyo-manga/vim-monster'
-" Plugin 'Shougo/neocomplete.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,15 +31,35 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+
+" yay
+imap jj <Esc>
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " map common command errors
-command WQ wq
-command Wq wq
-command W w
-command Q q
+command wq wq
+command wq wq
+command w w
+command q q
+
+set hlsearch        " Search stuff
+set incsearch       " Search stuff
+set ignorecase      " Search stuff
+set smartcase       " Search stuff
+set autoindent
+set nocompatible
+set nobackup
+set nowritebackup
+set history=50
+set ruler
+set cursorline
+set showcmd
+set laststatus=2
+set encoding=utf-8
+set clipboard=unnamed
+set noswapfile
 
 " show a vertial ruler
 set colorcolumn=80
@@ -69,21 +70,27 @@ set nu
 " turn off wordwrap
 " set nowrap
 
+" allow pretty pasting 
+" set paste "(removed due to conflict with imap)
+
 " convert all tab into space
 set et
 ret!
 
-" allow pretty pasting
-set paste
+"Spelling
+nmap <silent> <leader>s :set spell!<CR>
+set spelllang=en_US
+
 " No tabs in the source file.
 " All tab characters are 4 space characters. 
 set tabstop=4 shiftwidth=4 expandtab
 
 " change leader
-let mapleader = ","
+" let mapleader = ","
+let mapleader = "\<Space>"
 
 " tell terminal to use 256 colors
-" set t_Co=256
+" set t_co=256
 
 "Add this to ~/.profile to get 256 color support
 "if [ -e /usr/share/terminfo/x/xterm-256color ]; then                                                                    
@@ -92,14 +99,19 @@ let mapleader = ","
 "  export TERM='xterm-color'                                                                                             
 "fi  
 
-" colorscheme Monokai
-
 "" Solarized ""
 " Make sure to set the terminal pallete to 'Solarized' 
+" http://ethanschoonover.com/solarized
 syntax enable
-set background=dark
 colorscheme solarized
 highlight clear SignColumn
+
+" change background based on time of day
+if strftime("%H") < 12
+  set background=light
+else
+  set background=dark
+endif
 
 "Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -146,28 +158,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1 
 
-set autoindent
-set nocompatible
-set nobackup
-set nowritebackup
-set history=50
-set ruler
-set cursorline
-set showcmd
-set laststatus=2
-set encoding=utf-8
-set clipboard=unnamed
-set noswapfile
-
-imap jj <Esc>
-
 " tell nerdtree to close after file opens
 " let NERDTreeQuitOnOpen = 1
 
 " remap nerdtree toggle
 nmap <silent> <C-D> :NERDTreeToggle<CR>
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 " Toggle NERDTree
 map <F10> :NERDTreeToggle<cr>
@@ -175,9 +170,11 @@ map <F10> :NERDTreeToggle<cr>
 " Store more MRU entries
 let MRU_Max_Entries = 20
 
+" CTRLP
 let g:ctrlp_cmd = "CtrlPMixed"
 let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" Make CtrlP use ag to list the files. SO MUCH FASTER
+"let g:ctrlp_user_commnad = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
@@ -189,20 +186,15 @@ let g:ctrlp_prompt_mappings = {
   \ }
 
 " for multicursor
-let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_next_key='<C-d>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" MacOSX/Linux
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class
 set wildignore+=.svn,vendor/gems/*,*.jpg,*.jpeg,*.jpeg*,*.png,*.gif
 set wildignore+=*/public/uploads/*,*/.git/*,*/.bundle/*,*/bin/*,*/log/*
 set wildignore+=*/tmp/*,*/.sass-cache/*,*/.jhw-cache/*,*/node_modules/*
-
-
-" Set async completion.
-let g:monster#completion#rcodetools#backend = "async_rct_complete"
 
 " Use neocomplete.vim
 let g:neocomplete#force_omni_input_patterns = {
