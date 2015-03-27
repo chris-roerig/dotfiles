@@ -39,10 +39,10 @@ imap jj <Esc>
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " map common command errors
-command wq wq
-command wq wq
-command w w
-command q q
+command WQ wq
+command Wq wq
+command W w
+command Q q
 
 set hlsearch        " Search stuff
 set incsearch       " Search stuff
