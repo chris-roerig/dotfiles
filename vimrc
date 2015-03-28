@@ -7,9 +7,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'              " C+d opens/closes NT - shift a = full screen NT
 Plugin 'scrooloose/nerdcommenter'         " ,cl = comment line - ,cu = uncomment line
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kchmck/vim-coffee-script'
@@ -18,7 +16,7 @@ Plugin 'yegappan/mru'
 Plugin 'kien/ctrlp.vim'                   " shift r = change search type
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,7 +47,6 @@ set incsearch       " Search stuff
 set ignorecase      " Search stuff
 set smartcase       " Search stuff
 set autoindent
-set nocompatible
 set nobackup
 set nowritebackup
 set history=50
@@ -107,7 +104,7 @@ colorscheme solarized
 highlight clear SignColumn
 
 " change background based on time of day
-if strftime("%H") < 12
+if strftime("%H") < 10
   set background=light
 else
   set background=dark
@@ -158,19 +155,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1 
 
-" tell nerdtree to close after file opens
-" let NERDTreeQuitOnOpen = 1
-
-" remap nerdtree toggle
-nmap <silent> <C-D> :NERDTreeToggle<CR>
-
-" Toggle NERDTree
-map <F10> :NERDTreeToggle<cr>
-
 " Store more MRU entries
 let MRU_Max_Entries = 20
 
 " CTRLP
+let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = "CtrlPMixed"
 let g:ctrlp_working_path_mode = 'ra'
 " Make CtrlP use ag to list the files. SO MUCH FASTER
