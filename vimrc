@@ -7,15 +7,16 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdcommenter'         " ,cl = comment line - ,cu = uncomment line
+Plugin 'scrooloose/nerdcommenter'           " ,cl = comment line - ,cu = uncomment line
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'yegappan/mru'
-Plugin 'kien/ctrlp.vim'                   " shift r = change search type
+Plugin 'kien/ctrlp.vim'                     " shift r = change search type
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'tpope/vim-fugitive'                 " git
 " Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
@@ -42,7 +43,7 @@ command Wq wq
 command W w
 command Q q
 
-set hlsearch        " Search stuff
+set hlsearch        " highlight search
 set incsearch       " Search stuff
 set ignorecase      " Search stuff
 set smartcase       " Search stuff
