@@ -31,11 +31,17 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
+" change leader - Must be before remaps that use it
+let mapleader = "\<Space>"
+
 " yay
 imap jj <Esc>
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" Leader awesomeness
+" <Leader>p is mapped to CtrlP
+nnoremap <silent> <Leader>l :nohl<CR><C-l>  " redraws the screen and removes any search highlighting.
+nnoremap <Leader>k :tabnext<CR>             " next tab
+nnoremap <Leader>j :tabprevious<CR>         " prev tab
 
 " map common command errors
 command WQ wq
@@ -82,10 +88,6 @@ set spelllang=en_US
 " No tabs in the source file.
 " All tab characters are 4 space characters. 
 set tabstop=4 shiftwidth=4 expandtab
-
-" change leader
-" let mapleader = ","
-let mapleader = "\<Space>"
 
 " tell terminal to use 256 colors
 " set t_co=256
