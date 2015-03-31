@@ -7,16 +7,16 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdcommenter'           " ,cl = comment line - ,cu = uncomment line
-Plugin 'bling/vim-airline'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'yegappan/mru'
-Plugin 'kien/ctrlp.vim'                     " shift r = change search type
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'tpope/vim-fugitive'                 " git
+Plugin 'scrooloose/nerdcommenter'               " leader cl = comment line - leader cu = uncomment line
+Plugin 'bling/vim-airline'                      " sweet status bar
+Plugin 'flazz/vim-colorschemes'                 " colorschemes
+Plugin 'kchmck/vim-coffee-script'               " coffeescript syntax highlighting
+Plugin 'airblade/vim-gitgutter'                 " shows git changes
+Plugin 'tpope/vim-fugitive'                     " git commands in vim
+Plugin 'yegappan/mru'                           " most recently used files
+Plugin 'kien/ctrlp.vim'                         " shift r = change search type
+Plugin 'terryma/vim-multiple-cursors'           " sublime style multi cursors
+Plugin 'altercation/vim-colors-solarized.git'   " solarized colorscheme
 " Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
@@ -37,11 +37,28 @@ let mapleader = "\<Space>"
 " yay
 imap jj <Esc>
 
-" Leader awesomeness
+" Leader AWESOME-O
+"
 " <Leader>p is mapped to CtrlP
-nnoremap <silent> <Leader>l :nohl<CR><C-l>  " redraws the screen and removes any search highlighting.
-nnoremap <Leader>k :tabnext<CR>             " next tab
-nnoremap <Leader>j :tabprevious<CR>         " prev tab
+" redraws the screen and removes any search highlighting.
+nnoremap <silent> <Leader>l :nohl<CR><C-l>
+" next tab
+nnoremap <Leader>k :tabnext<CR>
+" prev tab
+nnoremap <Leader>j :tabprevious<CR>
+" new tab
+nnoremap <Leader>t :tabnew<CR>
+" fast search prompt
+nmap <Leader>o :/
+" fast search & replace prompt
+nmap <Leader>r :%s/\(<c-r>=expand("<cword>")<cr>\)/
+" just quit damn you
+nmap <Leader>q :q!<CR>
+
+"folding settings
+set nofoldenable        "dont fold by default
+set foldmethod=indent   "fold based on indent
+set foldlevel=1         "this is just what i use
 
 " map common command errors
 command WQ wq
@@ -74,7 +91,7 @@ set nu
 " turn off wordwrap
 " set nowrap
 
-" allow pretty pasting 
+" allow pretty pasting
 " set paste "(removed due to conflict with imap)
 
 " convert all tab into space
@@ -86,32 +103,31 @@ nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_US
 
 " No tabs in the source file.
-" All tab characters are 4 space characters. 
+" All tab characters are 4 space characters.
 set tabstop=4 shiftwidth=4 expandtab
 
 " tell terminal to use 256 colors
 " set t_co=256
 
 "Add this to ~/.profile to get 256 color support
-"if [ -e /usr/share/terminfo/x/xterm-256color ]; then                                                                    
-"  export TERM='xterm-256color'                                                                                          
-"else                                                                                                                    
-"  export TERM='xterm-color'                                                                                             
-"fi  
+"if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+"  export TERM='xterm-256color'
+"else
+"  export TERM='xterm-color'
+"fi
 
 "" Solarized ""
-" Make sure to set the terminal pallete to 'Solarized' 
+" Make sure to set the terminal pallete to 'Solarized'
 " http://ethanschoonover.com/solarized
 syntax enable
 colorscheme solarized
-highlight clear SignColumn
-
 " change background based on time of day
 if strftime("%H") < 10
   set background=light
 else
   set background=dark
 endif
+highlight clear SignColumn
 
 "Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -154,9 +170,9 @@ autocmd Filetype php            setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript     setlocal ts=4 sts=4 sw=4
 
 " autocomplete for ruby and rails
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 " Store more MRU entries
 let MRU_Max_Entries = 20
