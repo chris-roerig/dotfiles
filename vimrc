@@ -47,7 +47,7 @@ nnoremap <Leader>k :tabnext<CR>
 " prev tab
 nnoremap <Leader>j :tabprevious<CR>
 " new tab
-nnoremap <Leader>t :tabnew<CR>
+nnoremap <Leader>h :tabnew<CR>
 " fast search prompt
 nmap <Leader>o :/
 " fast search & replace prompt
