@@ -133,25 +133,26 @@ highlight clear SignColumn
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
-" The looks of it
+" let g:airline_theme='simple'
+let g:airline_theme='bubblegum'
+" update font settings in terminal profile if using iTerm2 on mac
 set guifont=Inconsolata\ for\ Powerline:h14
-let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
+  " unicode symbols
+  "let g:airline_left_sep = '»'
+  "let g:airline_left_sep = '▶'
+  "let g:airline_right_sep = '«'
+  "let g:airline_right_sep = '◀'
+  "let g:airline_symbols.linenr = '␊'
+  "let g:airline_symbols.linenr = '␤'
+  "let g:airline_symbols.linenr = '¶'
+  "let g:airline_symbols.branch = '⎇'
+  "let g:airline_symbols.paste = 'ρ'
+  "let g:airline_symbols.paste = 'Þ'
+  "let g:airline_symbols.paste = '∥'
+  "let g:airline_symbols.whitespace = 'Ξ'
 endif
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
 
 " GitGutter color settings
 highlight link GitGutterAdd DifAdd "" an added line
