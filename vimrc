@@ -31,6 +31,9 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
+" tell Vim where to look for tag file
+set tags=./.tags,.tags;$HOME
+
 " change leader - Must be before remaps that use it
 let mapleader = "\<Space>"
 
@@ -40,6 +43,7 @@ imap jj <Esc>
 " Leader AWESOME-O
 "
 " <Leader>p is mapped to CtrlP
+"
 " redraws the screen and removes any search highlighting.
 nnoremap <silent> <Leader>l :nohl<CR><C-l>
 " next tab
@@ -47,13 +51,21 @@ nnoremap <Leader>k :tabnext<CR>
 " prev tab
 nnoremap <Leader>j :tabprevious<CR>
 " new tab
-nnoremap <Leader>h :tabnew<CR>
+nnoremap <Leader>t :tabnew<CR>
 " fast search prompt
 nmap <Leader>o :/
 " fast search & replace prompt
 nmap <Leader>r :%s/\(<c-r>=expand("<cword>")<cr>\)/
 " just quit damn you
 nmap <Leader>q :q!<CR>
+" save
+nmap <Leader>w :w<CR>
+" write quit
+nmap <Leader>W :wq<CR>
+" ctrlp tagsearch
+nnoremap <leader>. :CtrlPTag<cr>
+" copy selection before commenting out :)
+map <Leader>Cl y gv <Leader>cl
 
 "folding settings
 set nofoldenable        "dont fold by default
@@ -122,11 +134,7 @@ set tabstop=4 shiftwidth=4 expandtab
 syntax enable
 colorscheme solarized
 " change background based on time of day
-if strftime("%H") < 10
-  set background=light
-else
-  set background=dark
-endif
+set background=dark
 highlight clear SignColumn
 
 "Powerline
@@ -139,7 +147,8 @@ let g:airline_theme='bubblegum'
 set guifont=Inconsolata\ for\ Powerline:h14
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
-  " unicode symbols
+  " unicode symbols 
+  " uncomment if Inconsolata font is not installed
   "let g:airline_left_sep = '»'
   "let g:airline_left_sep = '▶'
   "let g:airline_right_sep = '«'
@@ -205,7 +214,7 @@ set wildignore+=.svn,vendor/gems/*,*.jpg,*.jpeg,*.jpeg*,*.png,*.gif
 set wildignore+=*/public/uploads/*,*/.git/*,*/.bundle/*,*/bin/*,*/log/*
 set wildignore+=*/tmp/*,*/.sass-cache/*,*/.jhw-cache/*,*/node_modules/*
 
-" Use neocomplete.vim
-let g:neocomplete#force_omni_input_patterns = {
-\   'ruby' : '[^. *\t]\.\|\h\w*::',
-\}
+" Use neocomplete.vim 
+"let g:neocomplete#force_omni_input_patterns = {
+"\   'ruby' : '[^. *\t]\.\|\h\w*::',
+"\}
