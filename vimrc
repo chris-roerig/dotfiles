@@ -44,34 +44,34 @@ imap jj <Esc>
 "
 " <Leader>p is mapped to CtrlP
 "
-" redraws the screen and removes any search highlighting.
-nnoremap <silent> <Leader>l :nohl<CR><C-l>
-" next tab
-nnoremap <Leader>k :tabnext<CR>
-" prev tab
-nnoremap <Leader>j :tabprevious<CR>
-" new tab
-nnoremap <Leader>t :tabnew<CR>
+" copy selection before commenting out :)
+map <Leader>Cl y gv <Leader>cl
+" just quit damn you
+nmap <silent> <Leader>q :q!<CR>
+" save
+nmap <silent> <Leader>w :w<CR>
+" write quit
+nmap <silent> <Leader>W :wq<CR>
 " fast search prompt
 nmap <Leader>o :/
 " fast search & replace prompt
 nmap <Leader>r :%s/\(<c-r>=expand("<cword>")<cr>\)/
-" just quit damn you
-nmap <Leader>q :q!<CR>
-" save
-nmap <Leader>w :w<CR>
-" write quit
-nmap <Leader>W :wq<CR>
 " ctrlp tagsearch
 nnoremap <leader>. :CtrlPTag<cr>
-" copy selection before commenting out :)
-map <Leader>Cl y gv <Leader>cl
+" redraws the screen and removes any search highlighting.
+nnoremap <silent> <Leader>l :nohl<CR><C-l>
+" next tab
+nnoremap <silent> <Leader>k :tabnext<CR>
+" prev tab
+nnoremap <silent> <Leader>j :tabprevious<CR>
+" new tab
+nnoremap <silent> <Leader>t :tabnew<CR>
 " git status
-nnoremap <Leader>1 :Gstatus<CR>
+nnoremap <silent> <Leader>1 :Gstatus<CR>
 " git commit
-nnoremap <Leader>2 :Gcommit<CR>
+nnoremap <silent> <Leader>2 :Gcommit<CR>
 " git diff
-nnoremap <Leader>3 :Gdiff<CR>
+nnoremap <silent> <Leader>3 :Gdiff<CR>
 
 "folding settings
 set nofoldenable        "dont fold by default
@@ -106,12 +106,12 @@ set colorcolumn=80
 " display line numbers
 set nu
 " toggle line number
-nnoremap <Leader>z :set nonumber!<CR>
+nnoremap <silent> <Leader>z :set nonumber!<CR>
 
 " no pretty paste
 set nopaste
 " toggle pretty paste
-nnoremap <Leader>x :set paste!<CR>
+nnoremap <silent> <Leader>x :set paste!<CR>
 
 " turn off wordwrap
 " set nowrap
@@ -180,7 +180,7 @@ highlight link GitGutterAdd DifAdd
 " GitGutterChangeDelete " a changed line followed by at least one removed line
 
 "" white spaces per file type
-" 2 spaes
+" 2 spaces
 autocmd Filetype html           setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby           setlocal ts=2 sts=2 sw=2
 autocmd Filetype erb            setlocal ts=2 sts=2 sw=2
