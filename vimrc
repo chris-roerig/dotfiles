@@ -66,6 +66,8 @@ nnoremap <silent> <Leader>k :tabnext<CR>
 nnoremap <silent> <Leader>j :tabprevious<CR>
 " new tab
 nnoremap <silent> <Leader>t :tabnew<CR>
+" create a new tab and then close all others without saving
+nnoremap <silent> <Leader>T :tabnew <bar> tabo!<CR>
 " git status
 nnoremap <silent> <Leader>1 :Gstatus<CR>
 " git commit
@@ -231,6 +233,16 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " Dangerous, remove automatically all trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Rename files :D
+command! -bar -nargs=1 -bang -complete=file Rename :
+  \ let s:file = expand('%:p') |
+  \ setlocal modified |
+  \ keepalt saveas<bang> <args> |
+  \ if s:file !=# expand('%:p') |
+  \   call delete(s:file) |
+  \ endif |
+  \ unlet s:file
 
 " Use neocomplete.vim
 "let g:neocomplete#force_omni_input_patterns = {
