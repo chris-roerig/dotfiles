@@ -17,6 +17,7 @@ Plugin 'yegappan/mru'                           " most recently used files
 Plugin 'kien/ctrlp.vim'                         " shift r = change search type
 Plugin 'terryma/vim-multiple-cursors'           " sublime style multi cursors
 Plugin 'altercation/vim-colors-solarized.git'   " solarized colorscheme
+Plugin 'ngmy/vim-rubocop'                       " Ruby linter
 " Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
@@ -67,13 +68,29 @@ nnoremap <silent> <Leader>j :tabprevious<CR>
 " new tab
 nnoremap <silent> <Leader>t :tabnew<CR>
 " create a new tab and then close all others without saving
-nnoremap <silent> <Leader>T :tabnew <bar> tabo!<CR>
+nnoremap <silent> <Leader>T :1,100bd<CR>
 " git status
 nnoremap <silent> <Leader>1 :Gstatus<CR>
 " git commit
 nnoremap <silent> <Leader>2 :Gcommit<CR>
 " git diff
 nnoremap <silent> <Leader>3 :Gdiff<CR>
+" start Rubocop
+let g:vimrubocop_keymap = 0
+nmap <Leader>5 :RuboCop<CR>
+" toggle line number
+nnoremap <silent> <Leader>8 :set nonumber!<CR>
+" toggle pretty paste
+nnoremap <silent> <Leader>9 :set paste!<CR>
+" toggle line wrap
+nnoremap <silent> <Leader>0 :set nowrap!<CR>
+" reload vimrc :D
+nnoremap <silent> <Leader>s :so %<CR>
+
+"non leader mappings
+
+" replay macro
+nmap Q @q
 
 "folding settings
 set nofoldenable        "dont fold by default
@@ -81,10 +98,10 @@ set foldmethod=indent   "fold based on indent
 set foldlevel=1         "this is just what i use
 
 " map common command errors
-command WQ wq
-command Wq wq
-command W w
-command Q q
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
 
 set hlsearch        " highlight search
 set incsearch       " Search stuff
@@ -107,24 +124,13 @@ set colorcolumn=80
 
 " display line numbers
 set nu
-" toggle line number
-nnoremap <silent> <Leader>z :set nonumber!<CR>
 
 " no pretty paste
 set nopaste
-" toggle pretty paste
-nnoremap <silent> <Leader>x :set paste!<CR>
-
-" turn off wordwrap
-" set nowrap
 
 " convert all tab into space
 set et
 ret!
-
-"" Spelling
-nmap <silent> <Leader>s :set spell!<CR>
-set spelllang=en_US
 
 " No tabs in the source file.
 " All tab characters are 4 space characters.
