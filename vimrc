@@ -56,9 +56,9 @@ nmap <silent> <Leader>W :wq<CR>
 " fast search prompt
 nmap <Leader>o :/
 " fast search & replace prompt
-nmap <Leader>r :%s/\(<c-r>=expand("<cword>")<cr>\)/
+nmap <Leader>r :%s/\(<c-r>=expand("<cword>")<CR>\)/
 " ctrlp tagsearch
-nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <leader>. :CtrlPTag<CR>
 " redraws the screen and removes any search highlighting.
 nnoremap <silent> <Leader>l :nohl<CR><C-l>
 " next tab
@@ -67,8 +67,14 @@ nnoremap <silent> <Leader>k :tabnext<CR>
 nnoremap <silent> <Leader>j :tabprevious<CR>
 " new tab
 nnoremap <silent> <Leader>t :tabnew<CR>
+" move tab left
+nnoremap <silent> <Leader>g :execute "tabmove" tabpagenr() -2<CR>
+" move tab right
+nnoremap <silent> <Leader>h :execute "tabmove" tabpagenr()<CR>
 " create a new tab and then close all others without saving
-nnoremap <silent> <Leader>T :1,100bd<CR>
+" this is not working with vim 7.4
+" nnoremap <silent> <Leader>T :1,100bd<CR>
+nnoremap <silent> <Leader>T :qa!<CR>
 " git status
 nnoremap <silent> <Leader>1 :Gstatus<CR>
 " git commit
@@ -80,12 +86,16 @@ let g:vimrubocop_keymap = 0
 nmap <Leader>5 :RuboCop<CR>
 " toggle line number
 nnoremap <silent> <Leader>8 :set nonumber!<CR>
-" toggle pretty paste
-nnoremap <silent> <Leader>9 :set paste!<CR>
 " toggle line wrap
-nnoremap <silent> <Leader>0 :set nowrap!<CR>
+nnoremap <silent> <Leader>9 :set nowrap!<CR>
+" toggle pretty paste
+nnoremap <silent> <Leader>0 :set paste!<CR>
 " reload vimrc :D
 nnoremap <silent> <Leader>s :so %<CR>
+" lazy colon
+nnoremap <Leader>; :
+" lazy hi-light
+nnoremap <Leader>i *
 
 "non leader mappings
 
@@ -150,9 +160,12 @@ set tabstop=4 shiftwidth=4 expandtab
 " Make sure to set the terminal pallete to 'Solarized'
 " http://ethanschoonover.com/solarized
 syntax enable
-colorscheme solarized
+" colorscheme solarized
 set background=dark
 highlight clear SignColumn "so gitgutter looks right
+
+" trying this color scheme for now
+colorscheme Tomorrow-Night
 
 "" Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -240,7 +253,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " Dangerous, remove automatically all trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Rename files :D
+" Rename files (warning: saves new file in cwd)
 command! -bar -nargs=1 -bang -complete=file Rename :
   \ let s:file = expand('%:p') |
   \ setlocal modified |
@@ -251,6 +264,7 @@ command! -bar -nargs=1 -bang -complete=file Rename :
   \ unlet s:file
 
 " Use neocomplete.vim
+"let g:neocomplete#enable_at_startup = 1
 "let g:neocomplete#force_omni_input_patterns = {
 "\   'ruby' : '[^. *\t]\.\|\h\w*::',
 "\}
