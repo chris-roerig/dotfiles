@@ -18,6 +18,7 @@ Plugin 'kien/ctrlp.vim'                         " shift r = change search type
 Plugin 'terryma/vim-multiple-cursors'           " sublime style multi cursors
 Plugin 'altercation/vim-colors-solarized.git'   " solarized colorscheme
 Plugin 'ngmy/vim-rubocop'                       " Ruby linter
+Plugin 'vim-scripts/BufOnly.vim'                " Close all other buffers
 " Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
@@ -71,10 +72,8 @@ nnoremap <silent> <Leader>t :tabnew<CR>
 nnoremap <silent> <Leader>g :execute "tabmove" tabpagenr() -2<CR>
 " move tab right
 nnoremap <silent> <Leader>h :execute "tabmove" tabpagenr()<CR>
-" create a new tab and then close all others without saving
-" this is not working with vim 7.4
-" nnoremap <silent> <Leader>T :1,100bd<CR>
-nnoremap <silent> <Leader>T :qa!<CR>
+" close all other buffers
+nnoremap <silent> <Leader>T :BufOnly<CR>
 " git status
 nnoremap <silent> <Leader>1 :Gstatus<CR>
 " git commit
@@ -252,6 +251,9 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " Dangerous, remove automatically all trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" open all files in folder
+":args /path_to_dir/** | tab all
 
 " Rename files (warning: saves new file in cwd)
 command! -bar -nargs=1 -bang -complete=file Rename :
