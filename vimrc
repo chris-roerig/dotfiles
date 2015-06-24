@@ -19,7 +19,8 @@ Plugin 'terryma/vim-multiple-cursors'           " sublime style multi cursors
 Plugin 'altercation/vim-colors-solarized.git'   " solarized colorscheme
 Plugin 'ngmy/vim-rubocop'                       " Ruby linter
 Plugin 'vim-scripts/BufOnly.vim'                " Close all other buffers
-" Plugin 'Shougo/neocomplete.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,6 +55,8 @@ nmap <silent> <Leader>q :q!<CR>
 nmap <silent> <Leader>w :w<CR>
 " write quit
 nmap <silent> <Leader>W :wq<CR>
+" switch to shell
+nmap <silent> <Leader>z <C-z>
 " fast search prompt
 nmap <Leader>o :/
 " fast search & replace prompt
@@ -95,6 +98,8 @@ nnoremap <silent> <Leader>s :so %<CR>
 nnoremap <Leader>; :
 " lazy hi-light
 nnoremap <Leader>i *
+" toggle Nerdtree window
+nnoremap <silent><Leader>v :NERDTreeToggle<CR>
 
 "non leader mappings
 
@@ -129,7 +134,7 @@ set clipboard=unnamed
 set noswapfile
 
 " show a vertial ruler
-set colorcolumn=80
+set colorcolumn=120
 
 " display line numbers
 set nu
@@ -146,7 +151,7 @@ ret!
 set tabstop=4 shiftwidth=4 expandtab
 
 " tell terminal to use 256 colors
-" set t_co=256
+set t_Co=256
 
 "Add this to ~/.profile to get 256 color support
 "if [ -e /usr/share/terminfo/x/xterm-256color ]; then
@@ -164,7 +169,11 @@ set background=dark
 highlight clear SignColumn "so gitgutter looks right
 
 " trying this color scheme for now
-colorscheme Tomorrow-Night
+" colorscheme Tomorrow-Night
+colorscheme gruvbox
+if !has("gui_running")
+  let g:gruvbox_italic=0
+endif
 
 "" Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -201,6 +210,8 @@ highlight link GitGutterAdd DifAdd
 
 "" white spaces per file type
 " 2 spaces
+autocmd Filetype md             setlocal ts=2 sts=2 sw=2
+autocmd Filetype txt            setlocal ts=2 sts=2 sw=2
 autocmd Filetype html           setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby           setlocal ts=2 sts=2 sw=2
 autocmd Filetype erb            setlocal ts=2 sts=2 sw=2
@@ -217,7 +228,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 "" Store more MRU entries
-let MRU_Max_Entries = 20
+let MRU_Max_Entries = 30
 
 " CTRLP
 let g:ctrlp_map = '<Leader>p'
@@ -243,7 +254,7 @@ let g:multi_cursor_quit_key='<Esc>'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class
 set wildignore+=.svn,vendor/gems/*,*.jpg,*.jpeg,*.jpeg*,*.png,*.gif
-set wildignore+=*/public/uploads/*,*/.git/*,*/.bundle/*,*/bin/*,*/log/*
+set wildignore+=*/public/uploads/*,*/.git/*,*/.bundle/*,*/bin/*,*/log/*,*/doc/*
 set wildignore+=*/tmp/*,*/.sass-cache/*,*/.jhw-cache/*,*/node_modules/*
 
 "Remove delay after pressing escape and clearing the visual selection
@@ -265,8 +276,3 @@ command! -bar -nargs=1 -bang -complete=file Rename :
   \ endif |
   \ unlet s:file
 
-" Use neocomplete.vim
-"let g:neocomplete#enable_at_startup = 1
-"let g:neocomplete#force_omni_input_patterns = {
-"\   'ruby' : '[^. *\t]\.\|\h\w*::',
-"\}
