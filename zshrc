@@ -15,7 +15,7 @@ ZSH_THEME='arrow'
 # DISABLE_LS_COLORS="true"
 # DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
@@ -131,5 +131,12 @@ bindkey '^Z' fancy-ctrl-z
 # ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 source ~/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
 [[ "$TERM" == "xterm" ]] && export TERM=xterm-<t_Co>color
+
+# Add this to ~/.profile to get 256 color support
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+  export TERM='xterm-256color'
+else
+  export TERM='xterm-color'
+fi
 
 [ -f .zshrc_private ] && source .zshrc_private

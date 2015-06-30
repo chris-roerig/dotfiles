@@ -34,6 +34,32 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
+
+"Add this to ~/.profile to get 256 color support
+"if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+"  export TERM='xterm-256color'
+"else
+"  export TERM='xterm-color'
+"fi
+
+"" Solarized
+" Make sure to set the terminal pallete to 'Solarized'
+" http://ethanschoonover.com/solarized
+syntax enable
+" colorscheme solarized
+set background=dark
+highlight clear SignColumn "so gitgutter looks right
+
+" trying this color scheme for now
+" colorscheme Tomorrow-Night
+colorscheme gruvbox
+if !has("gui_running")
+  let g:gruvbox_italic=0
+endif
+
+" tell terminal to use 256 colors
+set t_Co=256
+
 " tell Vim where to look for tag file
 set tags=./.tags,.tags;$HOME
 
@@ -255,30 +281,4 @@ command! -bar -nargs=1 -bang -complete=file Rename :
 augroup myvimrc
   au!
   au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-auroup END
-
-" tell terminal to use 256 colors
-set t_Co=256
-
-"Add this to ~/.profile to get 256 color support
-"if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-"  export TERM='xterm-256color'
-"else
-"  export TERM='xterm-color'
-"fi
-
-"" Solarized
-" Make sure to set the terminal pallete to 'Solarized'
-" http://ethanschoonover.com/solarized
-syntax enable
-" colorscheme solarized
-set background=dark
-highlight clear SignColumn "so gitgutter looks right
-
-" trying this color scheme for now
-" colorscheme Tomorrow-Night
-colorscheme gruvbox
-if !has("gui_running")
-  let g:gruvbox_italic=0
-endif
-
+augroup END
