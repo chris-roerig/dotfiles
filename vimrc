@@ -92,8 +92,6 @@ nnoremap <silent> <Leader>8 :set nonumber!<CR>
 nnoremap <silent> <Leader>9 :set nowrap!<CR>
 " toggle pretty paste
 nnoremap <silent> <Leader>0 :set paste!<CR>
-" reload vimrc :D
-nnoremap <silent> <Leader>s :so %<CR>
 " lazy colon
 nnoremap <Leader>; :
 " lazy hi-light
@@ -133,7 +131,7 @@ set encoding=utf-8
 set clipboard=unnamed
 set noswapfile
 
-" show a vertial ruler
+" show a vertical ruler
 set colorcolumn=120
 
 " display line numbers
@@ -149,31 +147,6 @@ ret!
 " No tabs in the source file.
 " All tab characters are 4 space characters.
 set tabstop=4 shiftwidth=4 expandtab
-
-" tell terminal to use 256 colors
-set t_Co=256
-
-"Add this to ~/.profile to get 256 color support
-"if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-"  export TERM='xterm-256color'
-"else
-"  export TERM='xterm-color'
-"fi
-
-"" Solarized
-" Make sure to set the terminal pallete to 'Solarized'
-" http://ethanschoonover.com/solarized
-syntax enable
-" colorscheme solarized
-set background=dark
-highlight clear SignColumn "so gitgutter looks right
-
-" trying this color scheme for now
-" colorscheme Tomorrow-Night
-colorscheme gruvbox
-if !has("gui_running")
-  let g:gruvbox_italic=0
-endif
 
 "" Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -233,6 +206,7 @@ let MRU_Max_Entries = 30
 " CTRLP
 let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = "CtrlPMixed"
+let g:ctrlp_match_window = 'botom,order:btt,min:1,max:20,results:20'
 let g:ctrlp_working_path_mode = 'ra'
 " Make CtrlP use ag to list the files. SO MUCH FASTER
 "let g:ctrlp_user_commnad = 'ag %s -l --nocolor -g ""'
@@ -275,4 +249,36 @@ command! -bar -nargs=1 -bang -complete=file Rename :
   \   call delete(s:file) |
   \ endif |
   \ unlet s:file
+
+" autoload vimrc ;D
+" thanks http://stackoverflow.com/a/2403926/1491929
+augroup myvimrc
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+auroup END
+
+" tell terminal to use 256 colors
+set t_Co=256
+
+"Add this to ~/.profile to get 256 color support
+"if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+"  export TERM='xterm-256color'
+"else
+"  export TERM='xterm-color'
+"fi
+
+"" Solarized
+" Make sure to set the terminal pallete to 'Solarized'
+" http://ethanschoonover.com/solarized
+syntax enable
+" colorscheme solarized
+set background=dark
+highlight clear SignColumn "so gitgutter looks right
+
+" trying this color scheme for now
+" colorscheme Tomorrow-Night
+colorscheme gruvbox
+if !has("gui_running")
+  let g:gruvbox_italic=0
+endif
 
