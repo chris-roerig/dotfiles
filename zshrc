@@ -74,6 +74,16 @@ alias ggs='clear && git status'
 alias ggb='clear && git branch'
 alias ggl='clear && git log'
 alias migrate='rake db:migrate'
+alias seed='rake db:seed'
+alias hist='history | grep'
+alias cop='rubocop'
+alias copp='rubocop -f offenses'
+alias copa='rubocop -a'
+alias be='bundle exec'
+alias ber='bundle exec rake'
+alias sidek='be sidekiq'
+alias glas='git checkout -'
+alias killthin='kill $(lsof -i :3000 -t)'
 
 function ggc {
   git commit -m $1

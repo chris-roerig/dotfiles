@@ -21,6 +21,7 @@ Plugin 'ngmy/vim-rubocop'                       " Ruby linter
 Plugin 'vim-scripts/BufOnly.vim'                " Close all other buffers
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
+Plugin 'cakebaker/scss-syntax.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -217,6 +218,8 @@ autocmd Filetype erb            setlocal ts=2 sts=2 sw=2
 autocmd Filetype haml           setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml           setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee         setlocal ts=2 sts=2 sw=2
+autocmd Filetype scss           setlocal ts=2 sts=2 sw=2
+autocmd Filetype css            setlocal ts=2 sts=2 sw=2
 " 4 spaces
 autocmd Filetype php            setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript     setlocal ts=4 sts=4 sw=4
@@ -282,3 +285,14 @@ augroup myvimrc
   au!
   au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+" epic - auto toggle paste
+" thanks! https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
