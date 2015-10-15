@@ -84,6 +84,7 @@ alias ber='bundle exec rake'
 alias sidek='be sidekiq'
 alias glas='git checkout -'
 alias killthin='kill $(lsof -i :3000 -t)'
+alias tlog='tail -F log/development.log'
 
 function ggc {
   git commit -m $1
@@ -114,8 +115,17 @@ function killmysql {
   done
 }
 
+function killruby {
+  pids=($(ps -ef | grep ruby | awk '{print $2}'))
+  for i in "${pids[@]}"
+  do
+     :
+    eval "kill -9 $i"
+  done
+}
+
 function rubogit {
-  mfiles=($(git ls-files -m))
+  mfiles=($(git ls-files -m | grep .rb))
   for var in "$mfiles[@]"
   do
       :

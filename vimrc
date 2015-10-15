@@ -110,6 +110,10 @@ nnoremap <silent> <Leader>1 :Gstatus<CR>
 nnoremap <silent> <Leader>2 :Gcommit<CR>
 " git diff
 nnoremap <silent> <Leader>3 :Gdiff<CR>
+" page down
+nnoremap <silent> <Leader>a <C-f>
+" page up
+nnoremap <silent> <Leader>s <C-b>
 " start Rubocop
 let g:vimrubocop_keymap = 0
 nmap <Leader>5 :RuboCop<CR>
@@ -220,6 +224,7 @@ autocmd Filetype yaml           setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee         setlocal ts=2 sts=2 sw=2
 autocmd Filetype scss           setlocal ts=2 sts=2 sw=2
 autocmd Filetype css            setlocal ts=2 sts=2 sw=2
+autocmd Filetype lua            setlocal ts=2 sts=2 sw=2
 " 4 spaces
 autocmd Filetype php            setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript     setlocal ts=4 sts=4 sw=4
