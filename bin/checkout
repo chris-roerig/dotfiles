@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+branch = ARGV[0]
+
+if branch.nil?
+  puts "Specify a branch"
+  exit
+end
+
+def checkout_branch(name)
+  return if name[0] == "*"
+  `git checkout #{name}`
+end
+
+branch = branch.gsub(' ', '_').downcase
+output = `git branch`
+branches = output.gsub(' ', '').split "\n"
+branches.select! { |b|  b.downcase.include? branch }
+
+case branches.size
+when 0
+  puts "No branches found containing: #{branch}"
+when 1
+  checkout_branch(branches.first)
+else
+  puts "\nFound multiple branches:\n\n"
+  branches.each_with_index do |branch, key|
+    puts "#{key} - #{branch}"
+  end
+
+  print "\nChoose a number or anything else to cancel: "
+  selection = STDIN.gets.chomp
+
+  if selection.match(/\d/) && selection.to_i.between?(0, branches.size)
+    checkout_branch(branches.at(selection.to_i))
+  else
+    puts "#{selection} is not a valid option"
+  end
+end
