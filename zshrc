@@ -60,7 +60,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.bin" # custom scripts
 
+alias co="checkout"
 alias edoc="vim ~/Documents/Docs/index.html"
 alias gpull="git checkout master && git pull origin master && rake doc:app"
 alias ctags="`brew --prefix`/bin/ctags"
@@ -129,9 +131,18 @@ function rubogit {
   for var in "$mfiles[@]"
   do
       :
-    echo "${var}"
-    rubocop "${var}"
+    if [ "${var}" = "db/schema.rb" ]
+    then
+        continue
+    else
+      echo "\n\n"
+      rubocop "${var}"
+    fi
   done
+}
+
+function gitpush {
+  branch=$(git rev-parse --abbrev-ref HEAD)
 }
 
 # thanks http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/

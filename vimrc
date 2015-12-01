@@ -22,6 +22,9 @@ Plugin 'vim-scripts/BufOnly.vim'                " Close all other buffers
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -129,6 +132,8 @@ nnoremap <Leader>; :
 nnoremap <Leader>i *
 " toggle Nerdtree window
 nnoremap <silent><Leader>v :NERDTreeToggle<CR>
+" Dash search
+nmap <silent> <leader>d <Plug>DashSearch
 
 "non leader mappings
 
