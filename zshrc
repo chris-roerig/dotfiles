@@ -65,7 +65,6 @@ export PATH="$PATH:$HOME/.bin" # custom scripts
 alias co="checkout"
 alias edoc="vim ~/Documents/Docs/index.html"
 alias gpull="git checkout master && git pull origin master && rake doc:app"
-alias ctags="`brew --prefix`/bin/ctags"
 alias again="clear && !!"
 alias e='exit'
 alias c='clear'
@@ -161,7 +160,6 @@ bindkey '^Z' fancy-ctrl-z
 # for grubbox vim colorscheme
 # ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 source ~/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
-[[ "$TERM" == "xterm" ]] && export TERM=xterm-<t_Co>color
 
 # Add this to ~/.profile to get 256 color support
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
@@ -171,3 +169,10 @@ else
 fi
 
 [ -f .zshrc_private ] && source .zshrc_private
+
+unamestr=`uname`
+if [[ "$unamestr" == "Linux" ]]; then
+    [ -f .zshrc_linux ] && source .zshrc_linux
+else
+    [ -f .zshrc_osx ] && source .zshrc_osx
+fi
