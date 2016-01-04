@@ -62,6 +62,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.bin" # custom scripts
 
+alias s="git status"
 alias co="checkout"
 alias edoc="vim ~/Documents/Docs/index.html"
 alias gpull="git checkout master && git pull origin master && rake doc:app"
@@ -87,16 +88,28 @@ alias glas='git checkout -'
 alias killthin='kill $(lsof -i :3000 -t)'
 alias tlog='tail -F log/development.log'
 
-function ggc {
+function commit {
   git commit -m $1
 }
 
-function ggd {
+function uncommit {
+  git reset HEAD~1
+}
+
+function pull {
+  git pull $1
+}
+
+function diff {
   git diff $1
 }
 
 function master {
   git checkout master
+}
+
+function rebase-i {
+  git rebase -i $1
 }
 
 function gfind {

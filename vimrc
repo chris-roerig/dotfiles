@@ -25,6 +25,8 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'heartsentwined/vim-emblem'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
