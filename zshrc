@@ -170,10 +170,6 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-# for grubbox vim colorscheme
-# ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
-source ~/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
-
 # Add this to ~/.profile to get 256 color support
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
   export TERM='xterm-256color'

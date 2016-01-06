@@ -27,6 +27,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'heartsentwined/vim-emblem'
+Plugin 'mkarmona/colorsbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,16 +53,17 @@ filetype plugin indent on    " required
 " Make sure to set the terminal pallete to 'Solarized'
 " http://ethanschoonover.com/solarized
 syntax enable
-" colorscheme solarized
 set background=dark
 highlight clear SignColumn "so gitgutter looks right
 
 " trying this color scheme for now
+" colorscheme solarized
 " colorscheme Tomorrow-Night
-colorscheme gruvbox
-if !has("gui_running")
-  let g:gruvbox_italic=0
-endif
+" colorscheme gruvbox
+" if !has("gui_running")
+"   let g:gruvbox_italic=0
+" endif
+colorscheme colorsbox-stnight
 
 " tell terminal to use 256 colors
 set t_Co=256
