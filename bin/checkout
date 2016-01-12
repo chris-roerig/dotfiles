@@ -13,6 +13,10 @@ def checkout_branch(name)
 end
 
 branch = branch.gsub(' ', '_').downcase
+
+# special cases
+checkout_branch("-") and exit if branch == "-"
+
 output = `git branch`
 branches = output.gsub(' ', '').split "\n"
 branches.select! { |b|  b.downcase.include? branch }
