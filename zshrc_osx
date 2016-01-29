@@ -1,5 +1,8 @@
 # aliases
 alias ctags="`brew --prefix`/bin/ctags"
 
+# open file limit
+ulimit -n 10240
+
 # configurations
 [[ "$TERM" == "xterm" ]] && export TERM=xterm-<t_Co>color
