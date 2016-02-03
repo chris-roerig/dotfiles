@@ -7,7 +7,7 @@ if branch.nil?
   exit
 end
 
-def checkout_branch(name)
+def checkout(name)
   return if name[0] == "*"
   `git checkout #{name}`
 end
@@ -15,7 +15,8 @@ end
 branch = branch.gsub(' ', '_').downcase
 
 # special cases
-checkout_branch("-") and exit if branch == "-"
+checkout("-") and exit if branch == "-"
+checkout(".") and exit if branch == "."
 
 output = `git branch`
 branches = output.gsub(' ', '').split "\n"
@@ -25,7 +26,7 @@ case branches.size
 when 0
   puts "No branches found containing: #{branch}"
 when 1
-  checkout_branch(branches.first)
+  checkout(branches.first)
 else
   puts "\nFound multiple branches:\n\n"
   branches.each_with_index do |branch, key|
@@ -36,7 +37,7 @@ else
   selection = STDIN.gets.chomp
 
   if selection.match(/\d/) && selection.to_i.between?(0, branches.size)
-    checkout_branch(branches.at(selection.to_i))
+    checkout(branches.at(selection.to_i))
   else
     puts "#{selection} is not a valid option"
   end
