@@ -175,7 +175,7 @@ set clipboard=unnamed
 set noswapfile
 
 " show a vertical ruler
-set colorcolumn=80
+set colorcolumn=80,120
 
 " display line numbers
 set nu
