@@ -28,6 +28,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'heartsentwined/vim-emblem'
 Plugin 'mkarmona/colorsbox'
+Plugin 'mbbill/undotree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -136,6 +137,8 @@ nnoremap <Leader>; :
 nnoremap <Leader>i *
 " toggle Nerdtree window
 nnoremap <silent><Leader>v :NERDTreeToggle<CR>
+" toggle Undotree window
+nnoremap <silent> <Leader>e :UndotreeToggle<CR>
 " Dash search
 nmap <silent> <leader>d <Plug>DashSearch
 
@@ -172,7 +175,7 @@ set clipboard=unnamed
 set noswapfile
 
 " show a vertical ruler
-set colorcolumn=120
+set colorcolumn=80
 
 " display line numbers
 set nu
