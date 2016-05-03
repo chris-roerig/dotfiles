@@ -5,6 +5,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+set backspace=2
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'               " leader cl = comment line - leader cu = uncomment line
@@ -146,6 +148,9 @@ nmap <silent> <leader>d <Plug>DashSearch
 
 " replay macro
 nmap Q @q
+
+" map save to enter key in normal mode
+" noremap <CR> :w<CR>
 
 "folding settings
 set nofoldenable        "dont fold by default
