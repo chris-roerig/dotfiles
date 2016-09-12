@@ -61,8 +61,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:$HOME/.bin" # custom scripts
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+alias railss="rails s -p 3001"
 alias s="git status"
 alias co="checkout"
 alias com="git checkout master"
@@ -90,6 +90,7 @@ alias glas='git checkout -'
 alias killthin='kill $(lsof -i :3000 -t)'
 alias tlog='tail -F log/development.log'
 alias rails3='rails -s p3001'
+alias sphinxdb='mysql --host 127.0.0.1 --port 9306'
 
 function commit {
   git commit -m $1
@@ -119,8 +120,15 @@ function gfind {
   grep --exclude='./coverage/*' --exclude='*/tmp/*' --exclude='*.log' --exclude='./doc/*' --exclude='*/.tags/*' $1 . -R -n -I
 }
 
+# When no argument is provided all migrations created in the last day
+# will be shown.
 function migrations {
-  find ./db/migrate -type f -ctime -1
+  if [ "$#" -eq  "0" ]
+    then
+      find ./db/migrate -type f -ctime -1
+  else
+    ls ./db/migrate | tail -n$1
+  fi
 }
 
 function rollback {
@@ -193,3 +201,6 @@ if [[ "$unamestr" == "Linux" ]]; then
 else
     [ -f .zshrc_osx ] && source .zshrc_osx
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -31,6 +31,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'heartsentwined/vim-emblem'
 Plugin 'mkarmona/colorsbox'
 Plugin 'mbbill/undotree'
+Plugin 'janko-m/vim-test'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -84,6 +85,10 @@ imap jj <Esc>
 "
 " <Leader>p is mapped to CtrlP
 "
+
+map <Leader>_ :TestNearest<CR>
+map <Leader>+ :TestFile<CR>
+
 " copy selection before commenting out :)
 map <Leader>Cl y gv <Leader>cl
 " just quit damn you
@@ -194,7 +199,7 @@ ret!
 
 " No tabs in the source file.
 " All tab characters are 4 space characters.
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=2 shiftwidth=2 expandtab
 
 "" Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
