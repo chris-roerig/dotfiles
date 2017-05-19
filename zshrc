@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

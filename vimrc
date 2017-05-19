@@ -195,8 +195,8 @@ set tabstop=4 shiftwidth=4 expandtab
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
-" let g:airline_theme='simple'
-let g:airline_theme='bubblegum'
+let g:airline_theme='simple'
+"let g:airline_theme='bubblegum'
 " update font settings in terminal profile if using iTerm2 on mac
 set guifont=Inconsolata\ for\ Powerline:h14
 if !exists('g:airline_symbols')
