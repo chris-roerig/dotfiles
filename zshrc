@@ -62,11 +62,12 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.bin" # custom scripts
 
+alias pom="git pull origin master"
 alias unwip="git reset HEAD~"
 alias railss="rails s -p 3001"
 alias s="git status"
 alias co="checkout"
-alias cor="checkout -h | head"
+alias coh="checkout -h | head"
 alias com="git checkout master"
 alias edoc="vim ~/Documents/Docs/index.html"
 alias gpull="git checkout master && git pull origin master && rake doc:app"
@@ -215,5 +216,7 @@ else
     [ -f .zshrc_osx ] && source .zshrc_osx
 fi
 
+fpath=(/usr/local/share/zsh-completions $fpath)
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="$PATH:$HOME/.bin" # custom bin scripts
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

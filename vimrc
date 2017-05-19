@@ -11,6 +11,7 @@ set backspace=2
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'               " leader cl = comment line - leader cu = uncomment line
 Plugin 'bling/vim-airline'                      " sweet status bar
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'                 " colorschemes
 Plugin 'kchmck/vim-coffee-script'               " coffeescript syntax highlighting
 Plugin 'airblade/vim-gitgutter'                 " shows git changes
@@ -32,6 +33,7 @@ Plugin 'heartsentwined/vim-emblem'
 Plugin 'mkarmona/colorsbox'
 Plugin 'mbbill/undotree'
 Plugin 'janko-m/vim-test'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -85,7 +87,6 @@ imap jj <Esc>
 "
 " <Leader>p is mapped to CtrlP
 "
-
 map <Leader>_ :TestNearest<CR>
 map <Leader>+ :TestFile<CR>
 
@@ -202,10 +203,6 @@ ret!
 set tabstop=2 shiftwidth=2 expandtab
 
 "" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-" let g:airline_theme='simple'
 let g:airline_theme='bubblegum'
 " update font settings in terminal profile if using iTerm2 on mac
 set guifont=Inconsolata\ for\ Powerline:h14
