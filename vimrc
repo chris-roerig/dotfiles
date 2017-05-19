@@ -5,6 +5,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+set backspace=2
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'               " leader cl = comment line - leader cu = uncomment line
@@ -29,6 +31,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'heartsentwined/vim-emblem'
 Plugin 'mkarmona/colorsbox'
 Plugin 'mbbill/undotree'
+Plugin 'janko-m/vim-test'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -82,6 +85,10 @@ imap jj <Esc>
 "
 " <Leader>p is mapped to CtrlP
 "
+
+map <Leader>_ :TestNearest<CR>
+map <Leader>+ :TestFile<CR>
+
 " copy selection before commenting out :)
 map <Leader>Cl y gv <Leader>cl
 " just quit damn you
@@ -147,6 +154,9 @@ nmap <silent> <leader>d <Plug>DashSearch
 " replay macro
 nmap Q @q
 
+" map save to enter key in normal mode
+" noremap <CR> :w<CR>
+
 "folding settings
 set nofoldenable        "dont fold by default
 set foldmethod=indent   "fold based on indent
@@ -189,7 +199,7 @@ ret!
 
 " No tabs in the source file.
 " All tab characters are 4 space characters.
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=2 shiftwidth=2 expandtab
 
 "" Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim

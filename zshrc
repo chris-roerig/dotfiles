@@ -60,11 +60,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.bin" # custom scripts
 
+alias railss="rails s -p 3001"
 alias s="git status"
 alias co="checkout"
+alias com="git checkout master"
 alias edoc="vim ~/Documents/Docs/index.html"
 alias gpull="git checkout master && git pull origin master && rake doc:app"
 alias again="clear && !!"
@@ -88,6 +89,8 @@ alias sidek='be sidekiq'
 alias glas='git checkout -'
 alias killthin='kill $(lsof -i :3000 -t)'
 alias tlog='tail -F log/development.log'
+alias rails3='rails -s p3001'
+alias sphinxdb='mysql --host 127.0.0.1 --port 9306'
 
 function commit {
   git commit -m $1
@@ -114,7 +117,18 @@ function rebase-i {
 }
 
 function gfind {
-  grep --exclude='./coverage/*' --exclude='*/tmp/*' --exclude='*.log' --exclude='./doc/*' --exclude='*/.tags/*' $1 . -R -n
+  grep --exclude='./coverage/*' --exclude='*/tmp/*' --exclude='*.log' --exclude='./doc/*' --exclude='*/.tags/*' $1 . -R -n -I
+}
+
+# When no argument is provided all migrations created in the last day
+# will be shown.
+function migrations {
+  if [ "$#" -eq  "0" ]
+    then
+      find ./db/migrate -type f -ctime -1
+  else
+    ls ./db/migrate | tail -n$1
+  fi
 }
 
 function rollback {
@@ -154,8 +168,9 @@ function rubogit {
   done
 }
 
-function gitpush {
+function gpush {
   branch=$(git rev-parse --abbrev-ref HEAD)
+  eval "git push origin $branch"
 }
 
 # thanks http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
@@ -186,3 +201,6 @@ if [[ "$unamestr" == "Linux" ]]; then
 else
     [ -f .zshrc_osx ] && source .zshrc_osx
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
