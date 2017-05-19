@@ -62,15 +62,19 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.bin" # custom scripts
 
+alias pom="git pull origin master"
+alias unwip="git reset HEAD~"
 alias railss="rails s -p 3001"
 alias s="git status"
 alias co="checkout"
+alias coh="checkout -h | head"
 alias com="git checkout master"
 alias edoc="vim ~/Documents/Docs/index.html"
 alias gpull="git checkout master && git pull origin master && rake doc:app"
 alias again="clear && !!"
 alias e='exit'
 alias c='clear'
+alias cs='clear && git status'
 alias cim='vim'
 alias lsls='ls -la'
 alias ssource='source ~/.zshrc'
@@ -91,6 +95,7 @@ alias killthin='kill $(lsof -i :3000 -t)'
 alias tlog='tail -F log/development.log'
 alias rails3='rails -s p3001'
 alias sphinxdb='mysql --host 127.0.0.1 --port 9306'
+alias dbstatus='rake db:migrate:status'
 
 function commit {
   git commit -m $1
@@ -117,7 +122,7 @@ function rebase-i {
 }
 
 function gfind {
-  grep --exclude='./coverage/*' --exclude='*/tmp/*' --exclude='*.log' --exclude='./doc/*' --exclude='*/.tags/*' $1 . -R -n -I
+  grep --exclude='./coverage/*' --exclude='*/tmp/*' --exclude='*.log' --exclude='./doc/*' --exclude='./.tags' $1 . -R -n -I
 }
 
 # When no argument is provided all migrations created in the last day
@@ -173,6 +178,15 @@ function gpush {
   eval "git push origin $branch"
 }
 
+# "rebuild" one index at a time
+function rebuildts {
+  echo "rake ts:stop" && rake ts:stop
+  echo "rake ts:configure" && rake ts:configure
+  echo "Runnning indexer"
+  indexer --config config/development.sphinx.conf $1
+  echo "rake ts:start" && rake ts:start
+}
+
 # thanks http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -202,5 +216,7 @@ else
     [ -f .zshrc_osx ] && source .zshrc_osx
 fi
 
+fpath=(/usr/local/share/zsh-completions $fpath)
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="$PATH:$HOME/.bin" # custom bin scripts
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
