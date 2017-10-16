@@ -6,9 +6,10 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 #ZSH_THEME="sonicradish"
-ZSH_THEME='arrow'
+#ZSH_THEME='arrow'
+ZSH_THEME="ys"
 
 # CASE_SENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
@@ -217,6 +218,11 @@ else
 fi
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+set_iterm_profile() { echo -e "\033]50;SetProfile=$1\a" }
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="$PATH:$HOME/.bin" # custom bin scripts
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"

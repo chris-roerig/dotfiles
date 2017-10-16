@@ -292,7 +292,7 @@ set wildignore+=*/tmp/*,*/.sass-cache/*,*/.jhw-cache/*,*/node_modules/*
 set timeoutlen=1000 ttimeoutlen=0
 
 " Dangerous, remove automatically all trailing whitespaces on save
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 
 " open all files in folder
 ":args /path_to_dir/** | tab all
