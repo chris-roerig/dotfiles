@@ -33,6 +33,7 @@ Plugin 'heartsentwined/vim-emblem'
 Plugin 'mkarmona/colorsbox'
 Plugin 'mbbill/undotree'
 Plugin 'janko-m/vim-test'
+Plugin 'rust-lang/rust.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " All of your Plugins must be added before the following line
@@ -70,6 +71,8 @@ highlight clear SignColumn "so gitgutter looks right
 "   let g:gruvbox_italic=0
 " endif
 colorscheme colorsbox-stnight
+
+autocmd filetype crontab setlocal nobackup nowritebackup
 
 " tell terminal to use 256 colors
 set t_Co=256

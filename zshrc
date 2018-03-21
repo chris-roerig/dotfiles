@@ -9,7 +9,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="sonicradish"
 #ZSH_THEME='arrow'
-ZSH_THEME="ys"
+#ZSH_THEME="ys"
+ZSH_THEME="af-magic"
 
 # CASE_SENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
@@ -31,7 +32,9 @@ plugins=(git rails ruby wd)
 
 # User configuration
 
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -63,6 +66,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.bin" # custom scripts
 
+alias def="set_iterm_profile Default"
 alias pom="git pull origin master"
 alias unwip="git reset HEAD~"
 alias railss="rails s -p 3001"
@@ -223,6 +227,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="$PATH:$HOME/.bin" # custom bin scripts
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$HOME/.jenv/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(jenv init -)"
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"
