@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DOWNLOAD_DIR=$HOME/Downloads
+OLD_DIR=$DOWNLOAD_DIR/old
+
+mkdir -p $OLD_DIR
+
+for f in $DOWNLOAD_DIR/*
+do
+  if [ "$f" = "$OLD_DIR" ]; then continue; fi
+
+  FNAME=$(basename "$f")
+
+  cp -rp "$f" "$OLD_DIR/$FNAME"
+
+  rm -rf "$f"
+done
+
