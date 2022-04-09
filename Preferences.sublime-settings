@@ -1,6 +1,7 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
 {
-	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night (SL).tmTheme",
-	"font_size": 12,
+	"font_size": 11,
 	"ignored_packages":
 	[
 	],
@@ -8,10 +9,7 @@
 	[
 		80
 	],
-	"soda_classic_tabs": true,
-	"soda_folder_icons": true,
-	"theme": "Soda Dark 3.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"word_wrap": true
+	"word_wrap": false
 }
