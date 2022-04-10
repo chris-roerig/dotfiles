@@ -5,7 +5,7 @@
 #
 
 # software i like
-DNF_PACKAGES="git curl rubypick wget terminator sublime-text vim vala lua golang zsh gh"
+DNF_PACKAGES="git curl rubypick wget terminator sublime-text vim vala lua golang zsh gh gtk3-devel"
 
 # add sublime repo
 sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
