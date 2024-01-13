@@ -130,3 +130,22 @@ augroup ale_settings
     autocmd FileType bash let b:ale_linters = ['shellcheck'] " ShellCheck for Bash scripts
 augroup END
 
+
+"" Store more MRU entries
+let MRU_Max_Entries = 10
+" CTRLP
+let g:ctrlp_map = '<Leader>p'
+let g:ctrlp_cmd = "CtrlPMixed"
+let g:ctrlp_match_window = 'botom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_working_path_mode = 'ra'
+" Make CtrlP use ag to list the files. SO MUCH FASTER
+"let g:ctrlp_user_commnad = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'targets': '\targets\/*$',
+  \ }
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ }
