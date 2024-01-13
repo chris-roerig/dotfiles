@@ -45,56 +45,57 @@ colorscheme monokai-chris
 highlight! link SignColumn LineNr
 autocmd ColorScheme * highlight! link SignColumn LineNr
 
-" Additional settings
-set history=50
-set ruler
-set cursorline
-set showcmd
-set laststatus=2
-set encoding=utf-8
-set clipboard=unnamed
-set noswapfile
-set colorcolumn=80,120
-set nu
-set nopaste
-set et
-set tabstop=2 shiftwidth=2 expandtab
-let mapleader = "\<Space>"
+" Additional Core Settings
+set history=50                " Maximum number of lines for command-line history.
+set ruler                     " Show the cursor position all the time.
+set cursorline                " Highlight the current line.
+set showcmd                   " Show incomplete commands in the last line of the screen.
+set laststatus=2              " Always display the status line at the bottom.
+set encoding=utf-8            " Set character encoding to UTF-8 for international support.
+set clipboard=unnamed         " Use system clipboard for copy-paste operations.
+set noswapfile                " Disable swap file creation to prevent conflicts.
+set colorcolumn=80,120        " Highlight columns 80 and 120 to visually indicate code width.
+set nu                        " Display line numbers on the left.
+set nopaste                   " Disable paste mode to prevent unexpected formatting.
+set nowrap                   " Disable line wrapping for long lines.
+set et                        " Use expandtab to insert spaces instead of tabs.
+set tabstop=2 shiftwidth=2 expandtab  " Set tab behavior: 2 spaces, 2 spaces for indentation, expand tabs to spaces.
+let mapleader = "\<Space>"    " Define leader key as the spacebar.
 
-" Key mappings
-imap jj <Esc>
-nmap <silent> <Leader>0 :set paste!<CR>
-nmap <silent> <Leader>1 :Gstatus<CR>
-nmap <silent> <Leader>2 :Gcommit<CR>
-nmap <silent> <Leader>3 :Gdiff<CR>
-nmap <silent> <Leader>5 :RuboCop<CR>
-nmap <silent> <Leader>8 :set nonumber!<CR>
-nmap <silent> <Leader>9 :set nowrap!<CR>
-nmap <silent> <Leader>+ :TestFile<CR>
-nmap <silent> <Leader>_ :TestNearest<CR>
-nmap <silent> <Leader>a <C-f>
-nmap <silent> <Leader>Cl y gv <Leader>cl
-nmap <silent> <Leader>d <Plug>DashSearch
-nmap <silent> <Leader>e :UndotreeToggle<CR>
-nmap <silent> <Leader>g :execute "tabmove" tabpagenr() -2<CR>
-nmap <silent> <Leader>h :%!clang-format<CR>
-nmap <silent> <Leader>i *
-nmap <silent> <Leader>j :tabprevious<CR>
-nmap <silent> <Leader>k :tabnext<CR>
-nmap <silent> <Leader>l :nohl<CR><C-l>
-nmap <silent> <Leader>o :/
-nmap <silent> <Leader>p :CtrlPMixed<CR>
-nmap <silent> <Leader>q :q!<CR>
-nmap <silent> <Leader>r :%s/\(<c-r>=expand("<cword>")<CR>\)/
-nmap <silent> <Leader>s <C-b>
-nmap <silent> <Leader>S :sp
-nmap <silent> <Leader>t :tabnew<CR>
-nmap <silent> <Leader>T :BufOnly<CR>
-nmap <silent> <Leader>v :NERDTreeToggle<CR>
-nmap <silent> <Leader>w :w<CR>
-nmap <silent> <Leader>W :wq<CR>
-nmap <silent> <Leader>z <C-z>
-nnoremap <Leader>; :
+" Key Mappings
+imap jj <Esc>                  " Exit insert mode by typing "jj" quickly.
+nmap <silent> <Leader>0 :set paste!<CR>        " Toggle paste mode for pasting text.
+nmap <silent> <Leader>1 :Gstatus<CR>           " Open Git status window.
+nmap <silent> <Leader>2 :Gcommit<CR>           " Open Git commit window.
+nmap <silent> <Leader>3 :Gdiff<CR>             " Open Git diff view.
+nmap <silent> <Leader>5 :RuboCop<CR>           " Run RuboCop linter for Ruby.
+nmap <silent> <Leader>8 :set nonumber!<CR>     " Toggle line numbering.
+nmap <silent> <Leader>9 :set nowrap!<CR>       " Toggle line wrapping.
+nmap <silent> <Leader>+ :TestFile<CR>          " Run tests for current file.
+nmap <silent> <Leader>_ :TestNearest<CR>       " Run tests for nearest test block or function.
+nmap <silent> <Leader>a <C-f>                  " File search using Ctrl-F (fuzzy file finder).
+nmap <silent> <Leader>Cl y gv <Leader>cl       " Copy current line, yank it, and highlight copied text.
+nmap <silent> <Leader>d <Plug>DashSearch       " Initiate Dash search for word under cursor.
+nmap <silent> <Leader>e :UndotreeToggle<CR>    " Toggle display of Vim's undo history tree.
+nmap <silent> <Leader>g :execute "tabmove" tabpagenr() -2<CR>  " Move to previous tab in Vim.
+nmap <silent> <Leader>h :%!clang-format<CR>    " Format current C/C++ code using clang-format.
+nmap <silent> <Leader>i *                      " Initiate search for word under cursor.
+nmap <silent> <Leader>j :tabprevious<CR>       " Switch to previous tab in Vim.
+nmap <silent> <Leader>k :tabnext<CR>           " Switch to next tab in Vim.
+nmap <silent> <Leader>l :nohl<CR><C-l>         " Clear search highlighting and redraw the screen.
+nmap <silent> <Leader>o :/                     " Initiate forward search with "/" key.
+nmap <silent> <Leader>p :CtrlPMixed<CR>        " Activate CtrlP mixed mode for fuzzy file searching.
+nmap <silent> <Leader>q :q!<CR>                " Quit Vim without saving changes.
+nmap <silent> <Leader>r :%s/\(<c-r>=expand("<cword>")<CR>\)/  " Search and replace for word under cursor.
+nmap <silent> <Leader>s <C-b>                  " Scroll screen up by one screenful.
+nmap <silent> <Leader>S :sp                   " Split current window horizontally.
+nmap <silent> <Leader>t :tabnew<CR>            " Open a new tab in Vim.
+nmap <silent> <Leader>T :BufOnly<CR>           " Close all buffers except the current one.
+nmap <silent> <Leader>v :NERDTreeToggle<CR>    " Toggle the NERDTree file explorer.
+nmap <silent> <Leader>w :w<CR>                 " Save the current file.
+nmap <silent> <Leader>W :wq<CR>                " Save the current file and quit Vim.
+nmap <silent> <Leader>z <C-z>                 " Suspend Vim and return to the terminal.
+nnoremap <Leader>; :                          " Execute a command-line command when leader key followed by a semicolon is pressed.
 
 " Additional custom settings
 " Add any custom commands or settings here
@@ -128,3 +129,4 @@ augroup ale_settings
     autocmd FileType c,cpp,objc,c-header,cpp-header let b:ale_fixers = ['clang-format']
     autocmd FileType bash let b:ale_linters = ['shellcheck'] " ShellCheck for Bash scripts
 augroup END
+
